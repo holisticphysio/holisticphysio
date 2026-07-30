@@ -2119,3 +2119,22 @@ html.no-anim .hero {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #ffffff;
+  width: 0%;
+  z-index: 999;
+  transition: width 0.1s linear;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}

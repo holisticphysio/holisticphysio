@@ -21,3 +21,7 @@ node_modules/
 
 # Working notes / docs folder
 .md/
+
+# Understand Anything data dir (local knowledge-graph cache)
+.ua/
+.understand-anything/
