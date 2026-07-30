@@ -1421,6 +1421,119 @@ section {
   gap: 0.75rem;
 }
 
+.faq-byline {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ---------- Comparison table ---------- */
+.compare-table-wrap {
+  overflow-x: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  min-width: 560px;
+}
+
+.compare-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1rem 1.25rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+.compare-table th,
+.compare-table td {
+  text-align: left;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.compare-table thead th {
+  background: var(--mint-soft);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.compare-table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.compare-table tbody tr:last-child td,
+.compare-table tbody tr:last-child th {
+  border-bottom: none;
+}
+
+/* ---------- Case study ---------- */
+.case-study {
+  background: var(--mint-soft);
+  border-radius: var(--radius-media);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  display: grid;
+  grid-template-columns: 1fr minmax(9rem, 0.45fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.case-study-text {
+  display: grid;
+  gap: 1rem;
+}
+
+.case-study .title {
+  margin: 0;
+}
+
+.case-study .about-body-text {
+  margin: 0;
+  max-width: 68ch;
+}
+
+.case-study-note {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin: 0;
+}
+
+.case-study-graphic {
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.case-study-graphic svg {
+  width: 100%;
+  height: auto;
+  max-width: clamp(14rem, 20vw, 21rem);
+}
+
+@media (max-width: 700px) {
+  .case-study {
+    grid-template-columns: 1fr;
+  }
+
+  .case-study-graphic {
+    justify-self: center;
+  }
+
+  .case-study-graphic svg {
+    max-width: 9rem;
+  }
+}
+
 .faq-list details {
   background: var(--surface);
   border-radius: var(--radius-card);
