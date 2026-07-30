@@ -1,6 +1,19 @@
 # Holistic Physio — Handover
 
-Last updated: 2026-07-17
+Last updated: 2026-07-30
+
+## Current priority: SEO audit follow-through
+
+Full audit documented at `.md/SEO_AUDIT_2026_07_30.md` (health 7/10). Action plan, in order:
+
+1. **Condition page depth** (in progress) — pattern piloted and confirmed on `migraines-and-headaches.html` (commit `bc3846a`): rewrite the templated clinical paragraph with real dual-paradigm substance (Western mechanism + TCM framing, via the `integrative-physio-tcm-writer` skill), enrich the condition list items from 3-5 word fragments to real clinical detail, add a genuine safety/red-flag FAQ, add light natural internal links only where copy already supports it. Remaining pages to roll out to: `pain`, `sports-injuries`, `work-injuries`, `stress`, `anxiety-and-depression`, `fatigue`, `womens-health`, `digestive-issues`, `fertility`, `fertility-acupuncture`.
+2. **Keyword map** — assign a unique primary keyword per page to eliminate cannibalization risk (pain/sports-injuries/work-injuries currently competing for overlapping terms).
+3. **Service → condition linking** — add a "Conditions we treat" section to `physiotherapy.html`, `acupuncture.html`, `chinese-herbal-medicine.html`, `clinical-pilates.html`, linking to 3-4 relevant condition pages each.
+4. **Quick wins** — FAQ schema on homepage, Service schema on the 4 therapy pages.
+
+**Also done this audit cycle (2026-07-30):**
+- White reading-progress bar added to all 50 pages (`scripts/progress-bar.js`, commit `9299440`).
+- Location page strategy implemented across all 27 suburb pages: explicit "based in Highgate Hill, X minutes away" note + a unique service/condition pairing per suburb (Barefoot Physiotherapy pattern — proven at their 15-suburb scale). Prevents both thin-content duplication and the confusion of implying separate businesses. Commit `9e33319`.
 
 ## Project state
 
