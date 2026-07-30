@@ -2,18 +2,30 @@
 
 Last updated: 2026-07-30
 
-## Current priority: SEO audit follow-through
+## 2026-07-30 SEO audit — closed out
 
-Full audit documented at `.md/SEO_AUDIT_2026_07_30.md` (health 7/10). Action plan, in order:
+Full audit at `.md/SEO_AUDIT_2026_07_30.md` (started at health 7/10). Every action item from the audit is now complete:
 
-1. **Condition page depth** (in progress) — pattern piloted and confirmed on `migraines-and-headaches.html` (commit `bc3846a`): rewrite the templated clinical paragraph with real dual-paradigm substance (Western mechanism + TCM framing, via the `integrative-physio-tcm-writer` skill), enrich the condition list items from 3-5 word fragments to real clinical detail, add a genuine safety/red-flag FAQ, add light natural internal links only where copy already supports it. Remaining pages to roll out to: `pain`, `sports-injuries`, `work-injuries`, `stress`, `anxiety-and-depression`, `fatigue`, `womens-health`, `digestive-issues`, `fertility`, `fertility-acupuncture`.
-2. **Keyword map** — assign a unique primary keyword per page to eliminate cannibalization risk (pain/sports-injuries/work-injuries currently competing for overlapping terms).
-3. **Service → condition linking** — add a "Conditions we treat" section to `physiotherapy.html`, `acupuncture.html`, `chinese-herbal-medicine.html`, `clinical-pilates.html`, linking to 3-4 relevant condition pages each.
-4. **Quick wins** — FAQ schema on homepage, Service schema on the 4 therapy pages.
+1. **Condition page depth** ✅ — all 11 condition pages (`pain`, `sports-injuries`, `work-injuries`, `migraines-and-headaches`, `stress`, `anxiety-and-depression`, `fatigue`, `womens-health`, `digestive-issues`, `fertility`, `fertility-acupuncture`) rewritten with dual-paradigm substance (Western mechanism + TCM framing via the `integrative-physio-tcm-writer` skill), a plain-language pass to ~13-year-old reading level (jargon like "musculoskeletal," "cervicogenic," "neuroplasticity" either simplified or explained via a "doctors call this X" pattern), and a genuine safety/red-flag FAQ per page.
+2. **5 core modality pages deepened toward ~1,500 words** ✅ — `physiotherapy`, `acupuncture`, `chinese-herbal-medicine`, `clinical-pilates`, `fertility-acupuncture` each got genuinely new sections (not padding): physio's "when it needs backup," acupuncture's needle-safety section, herbal medicine's quality/interactions section, Pilates' "how this differs from a gym class," fertility acupuncture's male-fertility and timing sections.
+3. **Keyword map & cannibalization** ✅ — `pain.html` retargeted to "chronic pain physiotherapy" (was competing with sports/work injuries); `fertility.html` meta retargeted to the personal-story angle to differentiate from `fertility-acupuncture.html`'s exact-match target. "Related conditions/care" links added to the FAQ intro column (same size as "Good questions" heading, smaller supporting text, pill buttons) on both cannibalization clusters.
+4. **Service → condition linking** ✅ — was already in place from an earlier session; all 4 original modality pages already link out to 4-6 relevant condition pages.
+5. **FAQ schema** ✅ — was already present on the homepage.
+6. **Service schema** ✅ — added to all 5 modality pages (commit `09732c2`).
+7. **Location page decision** ✅ — decided to keep all 27 suburb pages permanently (Option A from the audit), not consolidate.
 
-**Also done this audit cycle (2026-07-30):**
+**Also done this audit cycle:**
 - White reading-progress bar added to all 50 pages (`scripts/progress-bar.js`, commit `9299440`).
-- Location page strategy implemented across all 27 suburb pages: explicit "based in Highgate Hill, X minutes away" note + a unique service/condition pairing per suburb (Barefoot Physiotherapy pattern — proven at their 15-suburb scale). Prevents both thin-content duplication and the confusion of implying separate businesses. Commit `9e33319`.
+- Location page strategy across all 27 suburb pages: explicit "based in Highgate Hill, X minutes away" note + a unique service/condition pairing per suburb (Barefoot Physiotherapy pattern). Commit `9e33319`.
+- `.photo-break` component capped to 70% width / auto-height (was a forced 21:9 crop) across all 5 pages using it; `work-injuries.html` also trimmed from 6 to 4 photo-break images. Commit `0dbc127`.
+
+**Standing/ongoing item (not a one-off task):** monitor the 27 suburb pages for content freshness now that they're a permanent fixture — the audit's only caution here was thin-content risk if they ever went stale.
+
+**Next SEO review:** 2026-09-30 per the audit doc.
+
+## Bug fixed: location note rendering before hero (24 suburb pages)
+
+24 of 27 suburb pages had the "We're based in Highgate Hill..." location-note section placed BEFORE the hero in the markup (only annerley, coorparoo, fairfield had the correct order). Fixed by moving it to immediately after the hero on all 24 pages, matching the reference pages. Also fixed a real data bug surfaced in the process: 20 of those pages had a drive-time figure in the note that didn't match the hero/footer value (e.g. New Farm said 12 minutes in two places, 9 in the note) — corrected to match. Commit `fde89b8`.
 
 ## Project state
 
