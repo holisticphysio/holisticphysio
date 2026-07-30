@@ -32,7 +32,7 @@ Health funds: registered with all major Australian private health funds, HICAPS 
 
 - [About Dr Sandra Tan](https://holisticphysio.com.au/about-us.html)
 - [The Holistic Physio Difference](https://holisticphysio.com.au/holistic-physio-difference.html)
-- [FAQ](https://holisticphysio.com.au/faq-frequently-asked-questions.html)
+- [FAQ](https://holisticphysio.com.au/index.html#faq)
 - [Contact](https://holisticphysio.com.au/contact.html)
 - [Sitemap](https://holisticphysio.com.au/sitemap.xml)
 
