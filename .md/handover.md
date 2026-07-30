@@ -27,6 +27,17 @@ Full audit at `.md/SEO_AUDIT_2026_07_30.md` (started at health 7/10). Every acti
 
 24 of 27 suburb pages had the "We're based in Highgate Hill..." location-note section placed BEFORE the hero in the markup (only annerley, coorparoo, fairfield had the correct order). Fixed by moving it to immediately after the hero on all 24 pages, matching the reference pages. Also fixed a real data bug surfaced in the process: 20 of those pages had a drive-time figure in the note that didn't match the hero/footer value (e.g. New Farm said 12 minutes in two places, 9 in the note) — corrected to match. Commit `fde89b8`.
 
+## Full-site internal linking audit + FAQ page retired (2026-07-30)
+
+Ran a full-site internal linking audit using the `seo-internal-linking` skill, parsing the actual `<main>`-content link graph across all 50 pages rather than assuming. Found and fixed:
+
+- `acupuncture.html` mentioned fertility twice but never linked to `fertility-acupuncture.html` — added the link.
+- `migraines-and-headaches.html` → `pain.html` was one-way (pain linked to migraines, not back) — made reciprocal.
+- `fatigue.html` → `stress.html` was one-way (stress linked to fatigue, not back) — made reciprocal.
+- `faq-frequently-asked-questions.html` was functionally orphaned: the global nav's "FAQ" link on all 50 pages (including its own) pointed to `index.html#faq`, never to itself, only reachable via 5 legal/trust page footers. 7 of its 9 questions duplicated the homepage FAQ. **Retired it**: merged the 2 unique questions ("Why should I choose Holistic Physio?", "What services do you offer?") into the homepage FAQ (visible + `FAQPage` JSON-LD, now 8 questions total), repointed the 5 pages that linked to it, removed it from `sitemap.xml` and `llms.txt`, deleted the file. See `feedback_holisticphysio_writer_skill.md` / `project_holisticphysio_faq_consolidation.md` in Claude memory for full detail. Commit `c54351f`.
+
+**Anchor text note (no action taken):** ~90% of links to `acupuncture.html` use the exact-match anchor "Acupuncture" (from template step-heading lists repeated across condition pages). Technically over-optimized per strict SEO anchor-rotation rules, but these are UX-necessary step labels — decided not to force artificial variation here.
+
 ## Project state
 
 Template-based rebuild of holisticphysio.com.au, sourced from the original WordPress export at `C:\1myguy\projects\holisticphysio.com.au ORIGINAL`. 50 HTML pages, static site, no build step. Root directory is the live document root (flat file structure, e.g. `acupuncture.html`, `annerley.html`).
