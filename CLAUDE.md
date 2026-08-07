@@ -1,13 +1,46 @@
-# Active Progress: Holistic Physio Brisbane home page (2026-07-13)
+# Holistic Physio (holisticphysio.com.au)
 
-**Status (2026-07-13, session 4):** BUILD COMPLETE, design-revised, awaiting HITL ship. Project folder is `projects/holisticphysio/` (renamed by user from `holisticphysio.com.au/` mid-session — use this path, not the old one). All copy, images, JSON-LD and quality gates from session 3 hold; session 4 fixed a real layout bug (practitioner portrait was rendering at native 196px width inside a wider container, leaving blank space — same fragile pattern flagged as a risk in `css/main.css` wherever `img{max-width:100%;height:auto}` meets a container wider than the source image; now fixed with explicit `width:100%`/`object-fit:cover`/`aspect-ratio` on `.practitioner__media` and `.difference__media`), removed all em dashes from every string in `index.html` and `condition-finder.js` per [[feedback_no_em_dashes]], dropped the redundant "Send an Enquiry" hero CTA, and added a real visual identity pass: ringed/framed photo motif reused across hero/difference/practitioner, radial-glow hero background, diagonal-cut divider into the trust bar, color-coded service-card top accents, and pull-quote-style testimonials.
+Brisbane physiotherapy and acupuncture clinic. Static site, no build step. Practitioner: Sandra Tan, Physiotherapist and Doctor of Chinese Medicine. Clinic at 26 Gladstone Rd (cnr Brook St), Highgate Hill Qld 4101.
 
-**Remaining before ship (all HITL, all documented in `projects/holisticphysio/seo-report.md`):**
-1. Cloudflare Pages deploy, then replace `PENDING_CF_ANALYTICS_TOKEN` in both `index.html` and `404.html` heads.
-2. Real testimonial quotes from the client (current ones are visibly flagged placeholders — remove the flag when replaced).
-3. Wire the enquiry form endpoint (`[data-contact-form]` markup is ready; status line currently tells visitors to call/book instead).
-4. After deploy: verify beacon fires, submit sitemap in GSC.
+**Last session: 2026-08-07.** Content and structure passover. Working tree has ~54 modified files uncommitted.
 
-**Harvest candidates for next Phase 8 pass:** `condition-finder.js` (10-condition chip/panel widget) is reusable for the module catalogue; the `html.js-modules` reveal-gate pattern (app.js sets the class, modules.css keys off it) should be ported back into the kit since ES modules silently fail on file:// — see [[feedback_es_modules_blocked_on_file_protocol]].
+## Stack and layout
 
-**Aside (unresolved, not blocking):** Intermittent Claude Code API errors, suspected local Headroom proxy (`ANTHROPIC_BASE_URL=http://127.0.0.1:8787`, headroom.exe v0.30.0). Bypass test (unset `ANTHROPIC_BASE_URL`/`ANTHROPIC_CUSTOM_HEADERS` for one session) suggested but not yet run.
+Vanilla HTML/CSS/JS, hand-authored, deployed on Cloudflare Pages (preview at holisticphysio.pages.dev). No framework, no bundler, no npm.
+
+- `css/main.css` is the only stylesheet.
+- `scripts/app.js` (nav, suburb widget, lightbox, email obfuscation, reveal gate), `scripts/progress-bar.js`.
+- `images/` uses the `holisticphysio-holistic-physio-` prefix on every asset.
+- 53 pages, all flat in the project root: `index.html`, 27 suburb pages, service and condition pages, 4 comparison pages, `about-us`, `contact`, and 3 legal pages.
+
+`app.js` holds the `SUBURBS` array (name, drive minutes, filename) that drives the suburb pill widget. Drive times there must stay in sync with the copy on each suburb page.
+
+## Conventions
+
+- Booking always links to the Zanda Health client portal, never an internal form. There is no contact form on the site and no form endpoint.
+- Contact links site-wide point at `contact.html`. Only `index.html` uses same-page `#therapies` / `#conditions` anchors in its nav and footer.
+- Every page carries the identical `<footer class="footer">` block including the 27-suburb "Areas we serve" grid.
+- No analytics or tracking scripts are installed. This is deliberate and the privacy policy now states it. If analytics is ever added, update `privacy-policy.html` in the same commit.
+- No dollar amounts anywhere in the copy. Fees and Medicare rebates change, so pages say "the Medicare rebate" and direct patients to confirm current amounts. Do not reintroduce figures.
+- Medicare wording is "chronic condition management plan". The old "Chronic Disease Management (CDM)" naming was swept out on 2026-08-07. The 5-service cap is shared across all allied health providers, not 5 physiotherapy visits.
+- Any use of "Dr Sandra Tan" must state the profession alongside it, per AHPRA advertising guidelines.
+- No em dashes. Enforced by a PostToolUse hook.
+
+## Suburb pages
+
+Each has a "Getting here from [Suburb]" section: driving route with real road names, parking and public transport, and for the longer variants a suburb-specific clinical observation. Two-paragraph and three-paragraph versions alternate so lengths vary (643 to 744 words). This structure exists specifically to keep textual similarity between suburb pages down, currently 69 to 77 percent, previously 87 to 95 percent. Do not regenerate these from a single template.
+
+Route detail was written from general Brisbane geography and has not been map-verified. The western suburbs (Sherwood, Corinda, Graceville, Indooroopilly) and the Eleanor Schonell Bridge bus claim on `st-lucia.html` are the ones worth checking.
+
+## Open items
+
+1. Verify "chronic condition management plan" is the current Services Australia plan name before the next deploy.
+2. Map-verify suburb page routes, western suburbs first.
+3. Location strategy: the 27 suburb pages are still a doorway-page risk even at 69 to 77 percent similarity. The agreed direction is a Barefoot-style single-location approach. Not started.
+4. Legal pages carry no JSON-LD. Low priority.
+5. Next scheduled SEO review: 2026-09-30.
+
+## Related skills and memory
+
+- Writing skill: `integrative-physio-tcm-writer` (grade-8 patient-facing, "doctors call this X" pattern for jargon).
+- Memory: `project_holisticphysio_seo_audit_2026_07_30`, `project_holisticphysio_ai_seo_2026_07_30`, `project_holisticphysio_location_strategy`, `project_holisticphysio_image_naming`, `project_holisticphysio_original_source`, `feedback_case_study_sourcing_discipline` (one review per page, never fabricate).
