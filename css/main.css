@@ -1936,9 +1936,10 @@ html.no-anim .hero {
 
 .cookie-popup p {
   margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .cookie-accept {
