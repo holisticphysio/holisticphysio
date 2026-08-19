@@ -1917,17 +1917,18 @@ html.no-anim .hero {
 /* ---------- Cookie consent popup ---------- */
 .cookie-popup {
   position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
-  max-width: 400px;
-  background: var(--ink);
-  color: var(--paper-on-dark);
-  padding: 1.5rem;
-  border-radius: var(--radius-card);
-  box-shadow: 0 8px 32px rgba(5, 43, 26, 0.3);
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  max-width: 360px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(5, 43, 26, 0.12);
   z-index: 1999;
-  animation: cookie-slide-up 0.4s var(--ease);
+  animation: cookie-slide-up 0.3s var(--ease);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1935,17 +1936,18 @@ html.no-anim .hero {
 
 .cookie-popup p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
+  color: var(--ink-soft);
 }
 
 .cookie-accept {
   background: var(--brand);
   color: var(--surface);
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.625rem 1.25rem;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s var(--ease);
@@ -1957,7 +1959,7 @@ html.no-anim .hero {
 }
 
 .cookie-popup.cookie-hidden {
-  animation: cookie-slide-down 0.3s var(--ease) forwards;
+  animation: cookie-slide-down 0.25s var(--ease) forwards;
 }
 
 @keyframes cookie-slide-up {
