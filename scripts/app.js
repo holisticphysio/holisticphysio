@@ -481,18 +481,22 @@
   var formModalClose = document.querySelector(".form-modal-close");
 
   function showFormModal(title, message, isSuccess) {
-    formModalContent.innerHTML = "<h3>" + title + "</h3><p>" + message + "</p>";
-    formModalContent.className = isSuccess ? "success" : "error";
-    formModal.classList.add("is-active");
-    formModal.setAttribute("aria-hidden", "false");
+    if (formModalContent && formModal && formModalBtn && formModalClose) {
+      formModalContent.innerHTML = "<h3>" + title + "</h3><p>" + message + "</p>";
+      formModalContent.className = isSuccess ? "success" : "error";
+      formModal.classList.add("is-active");
+      formModal.setAttribute("aria-hidden", "false");
+    }
   }
 
   function closeFormModal() {
-    formModal.classList.remove("is-active");
-    formModal.setAttribute("aria-hidden", "true");
+    if (formModal) {
+      formModal.classList.remove("is-active");
+      formModal.setAttribute("aria-hidden", "true");
+    }
   }
 
-  if (contactForm) {
+  if (contactForm && formModal && formModalContent && formModalBtn && formModalClose) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var submitBtn = contactForm.querySelector("button[type='submit']");
