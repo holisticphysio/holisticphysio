@@ -1,7 +1,5 @@
-// Cloudflare Worker function to handle contact form submissions
-export async function onRequest(context) {
-  const { request } = context;
-
+// Cloudflare Pages function to handle contact form submissions
+export default async (request, context) => {
   // Handle CORS preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, {
@@ -91,10 +89,13 @@ export async function onRequest(context) {
     console.error("Contact form error:", error);
     return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
-      headers: { "Content-Type": "application/json" }
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }
     });
   }
-}
+};
 
 function escapeHtml(text) {
   const map = {
