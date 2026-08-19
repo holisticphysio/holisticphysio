@@ -1,0 +1,17 @@
+name = "holisticphysio"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2024-01-01"
+
+# Environment-specific settings for production
+[env.production]
+name = "holisticphysio-production"
+
+# Set up environment variables
+[env.production.vars]
+# No public vars needed
+
+# Secrets should be set via `wrangler secret put RESEND_API_KEY --env production`

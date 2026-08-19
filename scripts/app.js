@@ -473,6 +473,51 @@
     });
   });
 
+  /* ---------- Contact form submission ---------- */
+  var contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var submitBtn = contactForm.querySelector("button[type='submit']");
+      var statusDiv = document.getElementById("form-status");
+
+      submitBtn.disabled = true;
+      statusDiv.textContent = "Sending...";
+      statusDiv.className = "form-status";
+
+      var formData = new FormData(contactForm);
+      var data = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        message: formData.get("message")
+      };
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+      .then(function (response) {
+        if (response.ok) {
+          statusDiv.textContent = "Message sent! We'll get back to you shortly.";
+          statusDiv.className = "form-status success";
+          contactForm.reset();
+        } else {
+          statusDiv.textContent = "Error sending message. Please try again or call us directly.";
+          statusDiv.className = "form-status error";
+        }
+      })
+      .catch(function (error) {
+        statusDiv.textContent = "Error sending message. Please try again or call us directly.";
+        statusDiv.className = "form-status error";
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
+    });
+  }
+
   /* ---------- Cookie consent popup ---------- */
   var cookieConsentKey = "holistic-physio-cookie-consent";
   if (!localStorage.getItem(cookieConsentKey)) {
