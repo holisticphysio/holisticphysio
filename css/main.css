@@ -1994,6 +1994,7 @@ html.no-anim .hero {
 .contact-form-section {
   background: var(--surface);
   padding: var(--space-section) var(--gutter);
+  scroll-margin-top: 6rem;
 }
 
 .contact-form-wrapper {
