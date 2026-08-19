@@ -474,7 +474,7 @@
   });
 
   /* ---------- Contact form submission ---------- */
-  var contactForm = document.getElementById("contact-form");
+  var contactForm = document.getElementById("contact-form-element");
   if (contactForm) {
     var statusDiv = document.createElement("div");
     statusDiv.id = "form-feedback";
