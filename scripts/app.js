@@ -475,32 +475,17 @@
 
   /* ---------- Contact form submission ---------- */
   var contactForm = document.getElementById("contact-form");
-  var formModal = document.getElementById("form-modal");
-  var formModalContent = document.getElementById("form-modal-content");
-  var formModalBtn = document.getElementById("form-modal-btn");
-  var formModalClose = document.querySelector(".form-modal-close");
+  if (contactForm) {
+    var statusDiv = document.createElement("div");
+    statusDiv.id = "form-feedback";
+    statusDiv.className = "form-feedback";
+    contactForm.appendChild(statusDiv);
 
-  function showFormModal(title, message, isSuccess) {
-    if (formModalContent && formModal && formModalBtn && formModalClose) {
-      formModalContent.innerHTML = "<h3>" + title + "</h3><p>" + message + "</p>";
-      formModalContent.className = isSuccess ? "success" : "error";
-      formModal.classList.add("is-active");
-      formModal.setAttribute("aria-hidden", "false");
-    }
-  }
-
-  function closeFormModal() {
-    if (formModal) {
-      formModal.classList.remove("is-active");
-      formModal.setAttribute("aria-hidden", "true");
-    }
-  }
-
-  if (contactForm && formModal && formModalContent && formModalBtn && formModalClose) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var submitBtn = contactForm.querySelector("button[type='submit']");
-
+      statusDiv.textContent = "Sending...";
+      statusDiv.className = "form-feedback sending";
       submitBtn.disabled = true;
 
       var formData = new FormData(contactForm);
@@ -518,24 +503,21 @@
       })
       .then(function (response) {
         if (response.ok) {
-          showFormModal("Message sent!", "Thank you! We'll get back to you shortly.", true);
+          statusDiv.innerHTML = "<strong>✓ Message sent!</strong> Thank you. We'll get back to you shortly.";
+          statusDiv.className = "form-feedback success";
           contactForm.reset();
         } else {
-          showFormModal("Error", "Something went wrong. Please try again or call us directly at 07 3844 8202.", false);
+          statusDiv.innerHTML = "<strong>Error sending message.</strong> Please try again or call 07 3844 8202.";
+          statusDiv.className = "form-feedback error";
         }
       })
       .catch(function (error) {
-        showFormModal("Error", "Something went wrong. Please try again or call us directly at 07 3844 8202.", false);
+        statusDiv.innerHTML = "<strong>Error sending message.</strong> Please try again or call 07 3844 8202.";
+        statusDiv.className = "form-feedback error";
       })
       .finally(function () {
         submitBtn.disabled = false;
       });
-    });
-
-    formModalBtn.addEventListener("click", closeFormModal);
-    formModalClose.addEventListener("click", closeFormModal);
-    formModal.addEventListener("click", function (e) {
-      if (e.target === formModal) closeFormModal();
     });
   }
 
