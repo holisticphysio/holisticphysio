@@ -610,11 +610,19 @@
             <textarea id="form-message" name="message" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn btn-solid">Send Message</button>
-          <div id="form-status" class="form-status" aria-live="polite"></div>
         </form>
       </div>
     </div>
   </section>
+
+  <!-- FORM STATUS MODAL -->
+  <div id="form-modal" class="form-modal" aria-hidden="true" role="dialog" aria-labelledby="form-modal-title">
+    <div class="form-modal-inner">
+      <button type="button" class="form-modal-close" aria-label="Close"></button>
+      <div id="form-modal-content"></div>
+      <button type="button" class="btn btn-solid form-modal-btn" id="form-modal-btn">Close</button>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">

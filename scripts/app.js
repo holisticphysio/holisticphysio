@@ -475,15 +475,29 @@
 
   /* ---------- Contact form submission ---------- */
   var contactForm = document.getElementById("contact-form");
+  var formModal = document.getElementById("form-modal");
+  var formModalContent = document.getElementById("form-modal-content");
+  var formModalBtn = document.getElementById("form-modal-btn");
+  var formModalClose = document.querySelector(".form-modal-close");
+
+  function showFormModal(title, message, isSuccess) {
+    formModalContent.innerHTML = "<h3>" + title + "</h3><p>" + message + "</p>";
+    formModalContent.className = isSuccess ? "success" : "error";
+    formModal.classList.add("is-active");
+    formModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeFormModal() {
+    formModal.classList.remove("is-active");
+    formModal.setAttribute("aria-hidden", "true");
+  }
+
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var submitBtn = contactForm.querySelector("button[type='submit']");
-      var statusDiv = document.getElementById("form-status");
 
       submitBtn.disabled = true;
-      statusDiv.textContent = "Sending...";
-      statusDiv.className = "form-status";
 
       var formData = new FormData(contactForm);
       var data = {
@@ -500,21 +514,24 @@
       })
       .then(function (response) {
         if (response.ok) {
-          statusDiv.textContent = "Message sent! We'll get back to you shortly.";
-          statusDiv.className = "form-status success";
+          showFormModal("Message sent!", "Thank you! We'll get back to you shortly.", true);
           contactForm.reset();
         } else {
-          statusDiv.textContent = "Error sending message. Please try again or call us directly.";
-          statusDiv.className = "form-status error";
+          showFormModal("Error", "Something went wrong. Please try again or call us directly at 07 3844 8202.", false);
         }
       })
       .catch(function (error) {
-        statusDiv.textContent = "Error sending message. Please try again or call us directly.";
-        statusDiv.className = "form-status error";
+        showFormModal("Error", "Something went wrong. Please try again or call us directly at 07 3844 8202.", false);
       })
       .finally(function () {
         submitBtn.disabled = false;
       });
+    });
+
+    formModalBtn.addEventListener("click", closeFormModal);
+    formModalClose.addEventListener("click", closeFormModal);
+    formModal.addEventListener("click", function (e) {
+      if (e.target === formModal) closeFormModal();
     });
   }
 

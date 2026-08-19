@@ -2083,6 +2083,117 @@ html.no-anim .hero {
   cursor: not-allowed;
 }
 
+/* ---------- Form modal popup ---------- */
+.form-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2001;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 43, 26, 0.4);
+  padding: 2rem;
+}
+
+.form-modal.is-active {
+  display: flex;
+}
+
+.form-modal-inner {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 2.5rem;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: modal-in 0.3s var(--ease) forwards;
+}
+
+@keyframes modal-in {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.form-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  background: var(--bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-size: 1.2rem;
+  transition: background 0.2s var(--ease);
+}
+
+.form-modal-close:hover {
+  background: var(--line);
+}
+
+.form-modal-close::before,
+.form-modal-close::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+}
+
+.form-modal-close::before {
+  transform: rotate(45deg);
+}
+
+.form-modal-close::after {
+  transform: rotate(-45deg);
+}
+
+#form-modal-content {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+#form-modal-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+#form-modal-content.success {
+  color: #2e7d32;
+}
+
+#form-modal-content.success h3 {
+  color: #1b5e20;
+}
+
+#form-modal-content.error {
+  color: #c62828;
+}
+
+#form-modal-content.error h3 {
+  color: #b71c1c;
+}
+
+.form-modal-btn {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .form-modal-inner {
+    padding: 1.5rem;
+    max-width: none;
+  }
+}
+
 .testimonials .rail-btn {
   border-color: rgba(255, 255, 255, 0.3);
   color: #fff;
