@@ -1,5 +1,6 @@
 // Cloudflare Pages function to handle contact form submissions
-export default async (request, context) => {
+export async function onRequest(context) {
+  const { request, env } = context;
   // Handle CORS preflight requests
   if (request.method === "OPTIONS") {
     return new Response(null, {
@@ -36,7 +37,7 @@ export default async (request, context) => {
     }
 
     // Get Resend API key from environment
-    const resendApiKey = context.env.RESEND_API_KEY;
+    const resendApiKey = env.RESEND_API_KEY;
     if (!resendApiKey) {
       console.error("RESEND_API_KEY not configured");
       return new Response(JSON.stringify({ error: "Email service not configured" }), {
@@ -95,7 +96,7 @@ export default async (request, context) => {
       }
     });
   }
-};
+}
 
 function escapeHtml(text) {
   const map = {
