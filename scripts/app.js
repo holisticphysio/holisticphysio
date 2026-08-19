@@ -507,11 +507,18 @@
           statusDiv.className = "form-feedback success";
           contactForm.reset();
         } else {
-          statusDiv.innerHTML = "<strong>Error sending message.</strong> Please try again or call 07 3844 8202.";
-          statusDiv.className = "form-feedback error";
+          return response.json().then(function (data) {
+            console.error("API error:", data);
+            statusDiv.innerHTML = "<strong>Error:</strong> " + (data.error || "Failed to send message. Please try again or call 07 3844 8202.");
+            statusDiv.className = "form-feedback error";
+          }).catch(function () {
+            statusDiv.innerHTML = "<strong>Error sending message.</strong> Please try again or call 07 3844 8202.";
+            statusDiv.className = "form-feedback error";
+          });
         }
       })
       .catch(function (error) {
+        console.error("Form submission error:", error);
         statusDiv.innerHTML = "<strong>Error sending message.</strong> Please try again or call 07 3844 8202.";
         statusDiv.className = "form-feedback error";
       })
