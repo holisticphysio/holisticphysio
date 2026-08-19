@@ -472,4 +472,33 @@
       }
     });
   });
+
+  /* ---------- Cookie consent popup ---------- */
+  var cookieConsentKey = "holistic-physio-cookie-consent";
+  if (!localStorage.getItem(cookieConsentKey)) {
+    var cookiePopup = document.createElement("div");
+    cookiePopup.className = "cookie-popup";
+    cookiePopup.innerHTML = '<p>We use Google Analytics to understand how you use our site and improve your experience.</p><button class="cookie-accept" aria-label="Accept cookies">Got it</button>';
+
+    var closeButton = cookiePopup.querySelector(".cookie-accept");
+    closeButton.addEventListener("click", function () {
+      localStorage.setItem(cookieConsentKey, "true");
+      cookiePopup.classList.add("cookie-hidden");
+      setTimeout(function () {
+        cookiePopup.remove();
+      }, 300);
+    });
+
+    document.body.appendChild(cookiePopup);
+
+    setTimeout(function () {
+      if (!localStorage.getItem(cookieConsentKey) && cookiePopup.parentElement) {
+        localStorage.setItem(cookieConsentKey, "true");
+        cookiePopup.classList.add("cookie-hidden");
+        setTimeout(function () {
+          if (cookiePopup.parentElement) cookiePopup.remove();
+        }, 300);
+      }
+    }, 5000);
+  }
 })();
