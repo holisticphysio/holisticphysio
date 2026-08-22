@@ -4,6 +4,22 @@
    Type: Outfit (display + body), Fraunces italic (accent words)
    ============================================================ */
 
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Variable.woff2") format("woff2-variations"), url("../fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/Fraunces-Italic-Variable.woff2") format("woff2-variations"), url("../fonts/Fraunces-Italic-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --ink: #101f16;
   --ink-soft: #43584b;
