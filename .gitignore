@@ -25,3 +25,8 @@ node_modules/
 # Understand Anything data dir (local knowledge-graph cache)
 .ua/
 .understand-anything/
+
+# Internal notes and tooling, never deployed (added 2026-11-22)
+/.md/
+/CLAUDE.md
+/wrangler.toml
