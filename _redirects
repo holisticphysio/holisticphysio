@@ -1,0 +1,4 @@
+# Removed internal files (2026-11-22): send requests for them home, overriding stale copies
+/.md/*  /  301
+/CLAUDE.md  /  301
+/wrangler.toml  /  301
